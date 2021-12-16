@@ -4,48 +4,27 @@
 
 int main()
 {
-	int n, c{ 0 };
-	int mas[N][N];
+	int n, c;
+	std::cin >> n;
 
-	fal::Read(n, mas);
-
+	int** array = new int*[n];
 	for (int i = 0; i < n; i++)
-	{
-		int j{ i };
-		if ((mas[i][j] > 0) && (fal::containsThreeOrFive(mas[i][j])) == 1)
-			c += 1;
-	}
+		array[i] = new int[n];
+
+	fal::Read(n,array);
+	
+	std::cout << fal::diagonalCheck(n,array) << std::endl;
+
+	c = fal::diagonalCheck(n, array);
 
 	if (c == n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			int mn{ INT_MAX };
-			int mni{ 0 }, mnj{ 0 };
-			int doubleSum{ 0 };
-
-			for (int j = 0; j < n; j++)
-			{
-				if (mas[j][i] < mn)
-				{
-					mn = mas[j][i];
-					mni = i;
-					mnj = j;
-				}
-				doubleSum = doubleSum + mas[j][i] * mas[j][i];
-			}
-
-			mas[mnj][mni] = doubleSum - mn * mn;
-		}
-		for (int i = 0; i < n; i++)
-		{
-			std::cout << "\n";
-			for (int j = 0; j < n; j++)
-				std::cout << mas[i][j] << " ";
-		}
-	}
+		fal::changeMatrix(n, array);
 	else
 		std::cout << "The elemnts do not match the conditions" << std::endl;
+	
+	for (int i = 0; i < n; i++)
+		delete[] array[n];
+	delete array;
 
 	return 0;
 }
