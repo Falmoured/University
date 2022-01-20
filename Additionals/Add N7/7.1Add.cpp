@@ -1,46 +1,51 @@
-﻿﻿#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <algorithm>
 
 
 int main()
 {
-    int sum{ 0 }, rs{ 1 }, s{}, h{};
-    std::vector<int> vec{ 75, 99, 56, 99, 342 };
+    std::vector<int> vec{ 36, 17, 4, 70 };
 
     for (int i = 0; i < vec.size(); i++)
     {
-        s = vec[i];
-        sum = 0;
+        int x, pr{ 1 }, ost;
 
-        while (s > 0)
+        x = vec[i];
+
+        while (x > 0)
         {
-            h = s % 10;
-            s = s / 10;
-            sum += h;
+            ost = x % 10;
+            x = x / 10;
+            pr = pr * ost;
         }
 
-        if (sum == 18) {
+        if (pr % 18 == 0)
             vec.erase(vec.begin() + i);
-        }
     }
 
-    int size = vec.size();
-    for (int i = 0; i < size; i++)
+    int newsize = vec.size();
+
+    for (int i = 0; i < newsize; i++)
     {
+        int x, ost;
+        bool f7{ 0 }, f0{ 0 };
 
-        s = vec[i];
-        rs = 1;
+        x = vec[i];
 
-
-        while (s > 0)
+        while (x > 0)
         {
-            h = s % 10;
-            s = s / 10;
-            rs *= h;
+            ost = x % 10;
+
+            if (ost == 7)
+                f7 = 1;
+            if (ost == 0)
+                f0 = 1;
+
+            x = x / 10;
         }
 
-        if (rs == 35)
+        if ((f7 == 1) && (f0 == 0))
         {
             vec.insert(vec.end(), vec[i]);
         }

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
-#include "5.1Add_h.hpp"
+#include "5.1Add_f.hpp"
+#define N 10000
 
 namespace fal
 {
@@ -10,31 +11,39 @@ namespace fal
             std::cin >> mas[i];
     }
 
-    void deleteAndDup(int& n, int mas[N], int& s, int& s1, int& sum, int& rs, int& h)
+    void deleteAndDup(int& n, int mas[N])
     {
+        int pr, x;
+        bool f7, f0;
+
         for (int i = 0; i < n; i++)
         {
-            s = s1 = mas[i];
-            rs = 1;
-            sum = 0;
+            x  = mas[i];
+            pr = 1; f7 = 0; f0 = 0;
+            int ost;
 
-            while (s > 0)
+            while (x > 0)
             {
-                h = s % 10;
-                s = s / 10;
-                sum += h;
-                rs *= h;
+                ost = x % 10;
+
+                if (ost == 7)
+                    f7 = 1;
+                if (ost == 0)
+                    f0 = 1;
+
+                x = x / 10;
+                pr = pr * ost;
             }
 
-            if (sum == 18)
+            if (pr % 18 == 0)
             {
-                for (int j = i; j <= n - 1; j++)
+                for (int j = i; j < n; j++)
                     mas[j] = mas[j + 1];
                 n--;
                 i--;
             }
 
-            if (rs == 35)
+            if ((f7 == 1) && (f0 == 0))
             {
                 n++;
                 for (int j = n - 1; j >= i + 1; j--)

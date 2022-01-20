@@ -4,6 +4,6 @@
 namespace fal
 {
 	void input(int& n, int mas[N]);
-	void deleteAndDup(int& n, int mas[N], int& s, int& s1, int& sum, int& rs, int& h);
+	void deleteAndDup(int& n, int mas[N]);
 	void output(int& n, int mas[N]);
 }
