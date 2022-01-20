@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿ы#include <iostream>
 #include <fstream>
 #include <Windows.h>
 #include <sstream>

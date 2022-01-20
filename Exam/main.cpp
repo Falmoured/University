@@ -11,7 +11,7 @@ const int width = 600;
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(height,width), "Test");
-	window.setFramerateLimit(120);
+	window.setFramerateLimit(360);
 
 	fal::Character character(50, 50);
 	fal::Stone stone(100, 100);
