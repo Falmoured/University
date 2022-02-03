@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15) # Проверка версии CMake.
 									 # Если версия установленой программы
 									 # старее указаной, произайдёт аварийный выход.
 
-set(PROJECT_NAME 1.1Lab)				 # имя проекта		 
+set(PROJECT_NAME Lab)				 # имя проекта		 
 project("${PROJECT_NAME}")
 
 
@@ -10,5 +10,5 @@ set(CMAKE_CXX_STANDARD 17)			 # устанавливаем 17 стандарт �
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-add_executable("${PROJECT_NAME}" 1.1Lab.cpp)
+add_executable("${PROJECT_NAME}" Lab.cpp)
 											
