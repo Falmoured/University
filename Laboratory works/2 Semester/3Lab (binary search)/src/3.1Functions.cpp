@@ -28,31 +28,42 @@ namespace fal
 	/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
 	// 3.1
-	int BinarySearch(int low, int high, int k, int* arr)
+	int StupidSearch(int N, int M, int* arr, int k)
 	{
-		if (k < arr[low])
-			return -1;
-		if (k == arr[low])
-			return 0;
-		if (k > arr[high])
-			return -1;
+		for (int i = 0; i < M; i++)
+			for (int j = 0; j < N; j++)
+				if (arr[j] == k)
+					return j+1;
+	}
 
-		int a{ low };
-		int b{ high };
-
-		while (a + 1 < b)
+	int BinarySearch(int low, int high, int M, int k, int* arr)
+	{
+		for (int i = 0; i < M; i++)
 		{
-			int c{ (a + b) / 2 };
+			if (k < arr[low])
+				return -1;
+			if (k == arr[low])
+				return 0;
+			if (k > arr[high])
+				return -1;
 
-			if (k > arr[c])
-				a = c;
+			int a{ low };
+			int b{ high };
+
+			while (a + 1 < b)
+			{
+				int c{ (a + b) / 2 };
+
+				if (k > arr[c])
+					a = c;
+				else
+					b = c;
+			}
+			if (arr[b] == k)
+				return b;
 			else
-				b = c;
+				return -1;
 		}
-		if (arr[b] == k)
-			return b;
-		else
-			return -1;
 	}
 
 	void QuickSort(int low, int high, int* arr)
@@ -81,6 +92,16 @@ namespace fal
 		QuickSort(low, l, arr);
 		QuickSort(h, high, arr);
 	}
+
+	/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
+	Timer::Timer() : m_beg(clock_t::now()) {}
+	void Timer::reset() {
+		m_beg = clock_t::now();
+	}
+	double Timer::elapsed() const {
+		return std::chrono::duration_cast<second_t>(clock_t::now() - m_beg).count();
+	}
+
 
 	void PrintArray(int high,int* arr)
 	{
