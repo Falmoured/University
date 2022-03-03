@@ -72,7 +72,7 @@ namespace fal
 			return;
 
 		int m, k, l, h;
-		m = rand() % high + 1;
+		m = (rand()*rand()) % (high - low + 1) + low;
 		k = arr[m];
 		l = low - 1;
 		h = high + 1;
