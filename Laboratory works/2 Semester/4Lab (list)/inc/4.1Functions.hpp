@@ -4,8 +4,8 @@ namespace fal
 {
     struct T_List
     {
-        T_List* next;
-        int age;
+        T_List* next; // отвечает за следующий элемент в списке
+        int age; // какая-либо информация, которую хранит в себе елемент списка
     };
 
     void ADD(T_List* head, int age);
@@ -15,6 +15,8 @@ namespace fal
     void PRINT(T_List* head);
 
     void CLEAR(T_List* head);
+
+    void DUPLICATE(T_List* head);
 
     int MAXSEARCH(T_List* head);
 

@@ -3,8 +3,8 @@
 
 int main()
 {
-	//std::ifstream in("input.txt");
-	//std::ofstream out("output.txt");
+	std::ifstream in("input.txt");
+	std::ofstream out("output.txt");
 	
 	int length;
 	std::cin >> length;
